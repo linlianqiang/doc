@@ -118,6 +118,10 @@ const likeArray: LikeArray = ['1', '2']
 ```js
 // 联合类型
 type Name = string;
+type objTest = {
+    age: number
+  	tech: string
+}
 type NameResolver = () => string;
 type NameOrResolver = Name | NameResolver;
 function getName(n: NameOrResolver): Name {  // getName(n: Name | NameResolver)
