@@ -1,9 +1,7 @@
 
 # 前端文档简介
 引擎中台团队前端文档说明
-
-* 前端通用编码规范
-* [中台控制台前端架构方案说明](web_docs/20210521-中台架构说明文档-苏勋颖.md)
-* [中台控制台前端全局API](web_docs/20210521-中台前端全局API-苏勋颖.md)
-* [CocosDashboard前端架构方案说明](G:\doc\workbase\git的基本用法.md)
+* [TypeScript](web_docs/20210521-中台架构说明文档-苏勋颖.md)
+* [架构师](web_docs/20210521-中台前端全局API-苏勋颖.md)
+* [java](G:\doc\workbase\git的基本用法.md)
 

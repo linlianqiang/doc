@@ -36,9 +36,85 @@ const add3: (x: number, y: number) => number = () => {
 }
 ```
 
+## 类
+
+* 定义：类就是拥有相同属性和方法的一系列对象的集合，类是一个摸具，是从这该类包含的所有具体对象中抽象出来的一个概念。
+
+  类定义了它所包含的全体对象的静态特征和动态特征。
+  
+  ```js
+  class Person {}
+  // 类的对象变量存在栈中，对象变量存储着对象的首地址，对象变量通过这个地址找到它的对象   
+  const zhangsan = new Person();
+  // 创建对象一共做了三件事
+  // 第一件事: 在堆中为类的某个对象【实例】分配一个空间
+  // 第二件事：调用对应的构造函数【构造器】并且把构造器中的各个参数值赋值给对象属性
+  // 第三件事：把对象赋值给对象变量 【把实例赋值给实例变量】 - d
+  ```
+  
+* 定义类中的属性，不同写法
+
+  ```js
+  class Person {
+      // 写法一：
+      // public 参数执行两步操作：
+      // 一，定义变量：public orderId: number;
+      // 二，构造函数默认赋值：this.orderId = orderId;
+      // 写法二：初始化值
+      // public orderId: number = 3;
+      // 写法三：ts4 之前写undefined联合类型，会有其他错误。ts4之后：
+      // public order!: number;  构造器未赋值的话，是undefined。写！不会检测，判断其类型。
+  	constructor(public orderId: number) {
+  
+      }
+  }
+  ```
+
+### private, public,protected
+
+* 默认为public
+
+* 当成员被标记为private时，它就不能在声明它的类的外部访问
+
+* protected和private类似，但是，protected成员在派生类中可以访问。**在实例中还是不能访问的**
+
+  ```js
+  class Animal {
+  　　protected name: string;
+  　　constructor(theName: string) {
+  　　　　this.name = theName;
+  　　}
+  	parentFun() {
+          
+      }
+  }
+  
+  class Rhino extends Animal {
+       constructor() {
+            super('Rhino');
+      }         
+      getName() {
+          super.parentFun()
+          console.log(this.name) //此处的name就是Animal类中的name
+      }
+  }
+  ```
+
+  
+
+### TS类与ES6类的区别
+
+* 定义属性的方式不同，ts如上，es6沿袭了js赋值的方式，在构造函数直接用this来定义属性，并且赋值。
+* es6类没有访问修饰符，ts有如上三个修饰符。
+* ts有类型推导的能力，无隐藏语法的错误
+* ts可以通过配置文件生成es5，或者es6的js版本
+
 ## 接口
 
-* 约束类
+是为一系列同类对象，同类别的类 提供属性定义和方法声明，但没有任何赋值和实现的数据类型。场景：
+
+* 提供方法的对象类型的参数时使用
+* 为多个同类别的类，提供统一的方法和属性声明：
 
 ```js
 interface ClockInterface {
@@ -192,6 +268,23 @@ function threeS(first: object | NumberObj, second: object | Number) {
  // 5. ...
 ```
 
+## type 与 interface的区别
+
+* interface 只能定义对象类型或接口当名字的函数类型。
+
+* type 可以定义任何类型，包括基础类型、联合类型 ，交叉类型，元组。
+
+  ```js
+  //  元组
+  interface Car { brandNo: string}
+  interface Plane { No: string; brandNo: string}
+  type TypVechile = [Car, Plane]
+  ```
+
+* 接口可以extends，type没有继承功能
+* 接口可以合并声明（名称相同），type会报错
+* type 可以用 & 交叉类型。接口不能交叉
+
 ## 枚举类型 Enum
 
 ```js
@@ -201,37 +294,6 @@ enum Status {
     DELETED
 }
 // 默认值为下标
-```
-
-
-
-## private, public,protected
-
-* 默认为public
-* 当成员被标记为private时，它就不能在声明它的类的外部访问
-* protected和private类似，但是，protected成员在派生类中可以访问。在实例中还是不能访问的
-
-```js
-class Animal {
-　　protected name: string;
-　　constructor(theName: string) {
-　　　　this.name = theName;
-　　}
-	parentFun() {
-        
-    }
-}
-
-class Rhino extends Animal {
-     constructor() {
-          super('Rhino');
-    }         
-    getName() {
-        super.parentFun()
-        console.log(this.name) //此处的name就是Animal类中的name
-    }
-}
-
 ```
 
 ## 类与接口的关系
