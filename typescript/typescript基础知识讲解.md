@@ -1,3 +1,9 @@
+## 前言
+
+TS无法在运行之前根据传递的值来推导方法最终返回的数据类型，只可以根据方法定义的类型展现。
+
+TS是让我们在开发时，可以推断类型，产生语法提示。如，类型断言。不用类型断言难道就不能用该方法了么？，会不会是多此一举
+
 ## 基本类型
 
 ```js
@@ -10,6 +16,23 @@ let n: null = null;
 // 不能使用错误方法。如：
 test.toString()
 ```
+
+### any 、 unknow
+
+* any  和unknow一样都可以定义任何数据类型。但unkonw类型不能随意赋值
+
+* any可以直接获得属性，unkonw不行
+
+  ```js
+  let price: any = "abc"
+  let total: number = price // true
+  let stuName: unknow = "wangwu"
+  let stuAge: number = stuName // false. unkonw类型不能赋值给string
+  let obj: unkn = {name: 'hehe'};
+  obj.name // false
+  ```
+
+  
 
 ## 数组 & 元组 tuple
 
