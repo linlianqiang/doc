@@ -61,6 +61,25 @@ const add3: (x: number, y: number) => number = () => {
 
 ## 类
 
+* class 与 let obj = {}的写法区别，要用什么写法？
+
+  ```css
+  let obj = { name: 'hello' }
+  // 属性里的值等于构造器赋值 new Object({name: 'hello'})
+  obj.__proto__ === Object.prototype 
+  
+  class ObjClass {}
+  // 等同于 function ObClass() {}   // ObjClass instanceof Object;
+  const objClassChild = new ObjClass(); 
+  
+  // export obj  等于 export new ObjClass()
+  objClassChild.__proto__ === ObjClass.prototype
+  ObjClass.prototype.__proto__ === Object.prototype  
+  // 多了一层过渡，说明objClassChild从ObjClass下来再从Object下来
+  ```
+  
+  总结：其实写法都一样，理解底层就行，尽量模仿class写法，使用面向对象的写法。
+  
 * 定义：类就是拥有相同属性和方法的一系列对象的集合，类是一个摸具，是从这该类包含的所有具体对象中抽象出来的一个概念。
 
   类定义了它所包含的全体对象的静态特征和动态特征。

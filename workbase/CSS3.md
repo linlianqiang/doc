@@ -81,6 +81,36 @@ background-image: repeating-radial-gradient(red, yellow 10%, green 15%);
 
 单词是改变的意思，改变元素本身的性质
 
+```css
+// 先将坐标系旋转45度，再沿着新的坐标平移200px.
+transform: rotate(45deg) translate(200px, 0);
+```
+
+其实，当旋转`45`度后，元素的整个坐标系都旋转了`45`度，如下图：
+
+<img src="https://images.cnblogs.com/cnblogs_com/xljzlw/676183/o_QQ%e6%88%aa%e5%9b%be20151115171530.png" alt="img" style="zoom:50%;float:left;" />
+
+```css
+#red {
+		background:red;
+		transform: rotate(45deg) translate(100px, 100px);
+	}
+	#green {
+		background:green;
+		transform: translate(100px, 100px) rotate(45deg);
+	}
+```
+
+
+
+<img src="https://images.cnblogs.com/cnblogs_com/xljzlw/676183/o_QQ%e6%88%aa%e5%9b%be20151115173609.png" alt="img" style="zoom:60%;float:left;" />
+
+
+
+图中可以看到，值的顺序对元素位置的影响。通过上面的介绍知道，红框先旋转再平移，即先旋转坐标系再平移，而绿框先按正常的坐标系平移，再旋转，所以它们的位置就不同了。
+
+我们可以举一反三，比如`3d`旋转等都可以按上面的方法去分析
+
 #### translate 平移
 
 从当前位置移动元素（x轴 和 y轴的参数）
@@ -185,6 +215,10 @@ transform: matrix(1, -0.3, 0, 1, 0, 0);
 * translateZ(*z*)
 * translate3d(*x*,*y*,*z*)
 
+##### transform-style
+
+规定如何在3D空间中呈现被嵌套的元素。必须与transform一同使用。
+
 ##### perspective 
 
 规定3D元素的透视效果
@@ -255,7 +289,30 @@ div:hover {
 
 ##### @keyframes 
 
-规定动画模式
+词意是关键帧。规定动画模式。0% 是动画的开始时间，100% 动画的结束时间。为了获得最佳的浏览器支持，应该始终定义 0% 和 100% 选择器。
+
+* 前面的值代表时间。如果是匀速，就要配合属性。0-50%是匀速。50%-100%是匀速。但是整体并非匀速。
+
+```css
+// from {
+    //   background-color: red;
+    // }
+// to {
+    //   background-color: yellow;
+    // }
+0% {
+    width: 50px;
+    background-color: red;
+}
+50% {
+    width: 80px;
+    background-color: yellow;
+}
+100% {
+    width: 1800px;
+    background-color: green;
+}
+```
 
 ##### animation-delay
 
@@ -263,7 +320,10 @@ div:hover {
 
 ##### animation-direction
 
-规定动画是向前播放，向后播放还是交替播放
+规定动画是向前播放，向后播放还是交替播放。
+
+* normal 默认值。向前正常播放
+* alternate： 动画应该轮流反向播放。
 
 ##### animation-duration
 
@@ -271,11 +331,19 @@ div:hover {
 
 ##### animation-fill-mode
 
-规定元素在不播放动画时的样式（在开始前，结束后，或两者同时）
+规定元素在不播放动画时的样式（在开始前，结束后，或两者同时）。
+
+* none：不改变默认行为
+* forwards：动画完成后，保持最后一个属性（在最后一个关键帧中定义）
+* backwards：在 animation-delay 所指定的一段时间内，在动画显示之前，应用开始属性值（在第一个关键帧中定义）。
+* both：forwards & backwards
 
 ##### animation-iteration-count
 
 规定动画应播放的次数
+
+* n： 次数
+* infinite：无限播放
 
 ##### animation-name
 
@@ -283,8 +351,42 @@ div:hover {
 
 ##### animation-play-state
 
-规定动画是运行还是暂停
+规定动画是运行还是暂停。结合js使用。
+
+*  paused / running
+
+```css
+.stop {
+    animation-play-state: paused;
+  }
+```
+
+
 
 ##### animation-timing-function
 
 规定动画的速度曲线。同过渡的动画曲线一致。
+
+```css
+// p
+
+.ani-wrap {
+    width: 100px;
+    height: 100px;
+    background:red;
+  }
+  // .ani-wrap,
+  .ani {
+    animation-name: example;
+    animation-duration: 4s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+  }
+  .stop {
+    animation-play-state: paused;
+  }
+```
+
