@@ -6,7 +6,7 @@
 
 * 径向渐变：Radial Gradients。以中心点的方式进行发散
 
-  <img src="G:\doc\media\渐变.png" alt="gradient" style="zoom:60%;float:left" />
+  <img src="..\media\渐变.png" alt="gradient" style="zoom:60%;float:left" />
 
 ### 线性渐变
 
