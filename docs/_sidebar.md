@@ -16,6 +16,15 @@
   - [git提交规范](standardTool/代码提交规范以及仓库规范.md)
   - [SASS规范](standardTool/SASS规范.md)
   - [vscode配置](standardTool/.vscode.md)
+- java基础
+  - [基础语法一](java/java基础一.md)
+  - [基础语法二](java/基础二.md)
+  - [面向对象](java/面向对象.md)
+  - [设计模式](java/设计模式/设计模式.md)
+- java应用
+  - [spring基础](java/spring/spring基础.md)
+- 数据库
+  - [mysql](java/mysql.md)
 - typescript
   - [基础1](typescript/typescript基础知识讲解.md)
   - [基础2](typescript/从TS角度重新理解原型.md)
@@ -25,7 +34,6 @@
   - [泛型基础](typescript/typescript详细泛型讲解.md)
   - [泛型类]
   - [泛型接口]
-
 - 基础
   - [git及日常](basic/git等日常操作.md)
   - js
@@ -42,10 +50,6 @@
 - cocos
   - [中台]
   - [大数据]
-- 后端服务
-  - [java]
-  - [数据库]
-- 面试题
 - 其他
   - [谷歌统计]
 

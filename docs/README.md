@@ -3,7 +3,7 @@
 ## 本地运行
 
 ```
-docsify serv
+docsify serve docs
 ```
 
 
