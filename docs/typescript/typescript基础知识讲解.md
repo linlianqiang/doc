@@ -371,3 +371,42 @@ const son = new Person(11, 22);
 console.log(son.eat());
 ```
 
+## 声明文件
+
+```js
+// 加declare防止被编译成js，type 和 interface是js无法识别的关键字
+declare let/const  // 声明全局变量
+declare function // 声明全局方法
+declare class // 声明全局类
+declare enum // 声明全局枚举类型
+declare namespace // 声明（含有子属性的）全局对象， 
+interface/type // 声明全局类型
+```
+
+```js
+// namespace全局变量是个对象
+// 使用 jquery.$.ajax
+
+declare namespace Jquery {
+
+    namespace $ {
+        // ---- Package ---- start
+        function ajaz(url: string): void
+    }
+}
+```
+
+```js
+// module 防止污染
+declare module jqueryM {
+	export funxtion $(selector: any) : cssSelector
+    namespace $ {
+        // ---- Package ---- start
+        function ajaz(url: string): void
+    }
+}
+ // 使用
+ import $ from 'jqueryM
+```
+
+* 通过export关键字，防止声明污染，用的时候需要引入。
