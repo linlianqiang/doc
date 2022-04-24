@@ -1,25 +1,6 @@
-进程/端口
-
-#### 查看PID
-
-```
-netstat -aon|findstr "8081"
-//查看具体哪个y
-tasklist|findstr "9088"
-```
-
-#### 结束进程
-
-```
-taskkill /T /F /PID 9088 
-```
-
 ## git
 
-#### 使用习惯
 
-* 本地develop只能合并远程的develop
-* 功能或者bug等，都要在develop上新建分支
 
 #### 将某个文件回退到某个版本
 

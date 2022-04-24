@@ -398,15 +398,15 @@ declare namespace Jquery {
 
 ```js
 // module 防止污染
-declare module jqueryM {
+declare module "jqueryM" {
 	export funxtion $(selector: any) : cssSelector
     namespace $ {
         // ---- Package ---- start
         function ajaz(url: string): void
     }
 }
- // 使用
- import $ from 'jqueryM
+ // 使用： 有import的地方，需要declare module声明，同时里面可以抛出export。 可以用来扩展y
+ import $ from jqueryM
 ```
 
 * 通过export关键字，防止声明污染，用的时候需要引入。
