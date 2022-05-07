@@ -1,3 +1,10 @@
+- 综合应用
+  * [react](面试/react.md)
+  * [vue](面试/vue.md)
+  * [面试题](面试/面试题.md)
+  * [webpack](面试/工程化工具.md)
+  * [js/ts](面试/js-ts.md)
+ 
 - 前端架构
   - [设计原则](architect/如何设计vue、react组件.md)
   - [内存管理](architect/前端内存管理.md)
@@ -27,11 +34,5 @@
     - [Flexbox](basic/html-css/Flexbox.md)
     - [移动端UI](basic/html-css/移动端UI开发.md)
     - [图片规范](basic/html-css/前端图片规范.md)
- 
-- 面试
-  * [react](面试/react.md)
-  * [vue](面试/vue.md)
-  * [面试题](面试/面试题.md)
-  * [webpack](面试/工程化工具.md)
-  * [js/ts](面试/js-ts.md)
+
 

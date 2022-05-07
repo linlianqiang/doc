@@ -259,7 +259,7 @@ class childComponent extends Component {
 ```
 
 ### 性能优化：PureComponent & memo
-默认实现了浅比较的shouldComponentUpdate。PureComponent用于class组件，memo用于函数组件。
+默认实现了浅比较的shouldComponentUpdate：PureComponent用于class组件，memo用于函数组件。
 
 仅在你的 props 和 state 较为简单时，才使用 `React.PureComponent`，或者在深层数据结构发生变化时调用 [`forceUpdate()`](https://zh-hans.reactjs.org/docs/react-component.html#forceupdate) 来确保组件被正确地更新。你也可以考虑使用 [immutable 对象](https://facebook.github.io/immutable-js/)加速嵌套数据的比较。
 
@@ -310,12 +310,11 @@ render() {
 * React16，事件全部绑定到document上。 而react17事件绑定到root组件上。原因是有利于多个React版本并存。例如微前端，因为微前端是公用一个document。
 
 ### redux （react-redux）
-1，redux 提供createStore，接收reducer参数。集合了所有store（vuex）
-2，react-redux 提供了Provide和connect。（mapStateToProps，mapDispatchToProps）
-3，用connect连接的组件，props能接收到store，和dispatch
-4，dispatch 触发reducer 接收一个action，和旧的state：
-    dispatch(action(newState))
-5, redux的设计思想，容器组件（维护state） 和 UI组件（只渲染）。
+* redux 提供createStore，接收reducer参数。集合了所有store（vuex）
+* react-redux 提供了Provide和connect。（mapStateToProps，mapDispatchToProps）
+* 用connect连接的组件，props能接收到store，和dispatch
+* dispatch 触发reducer 接收一个action，和旧的state：dispatch(action(newState))
+*  redux的设计思想，容器组件（维护state） 和 UI组件（只渲染）。
 
 异步实现：
 使用中间件：redux-thunk
@@ -324,9 +323,10 @@ render() {
 ### redux的设计理念
 为什么要引入这么多复杂的概念：action，reducer，dispatch，store？
 因为大型应用state什么时候，如何改变，没法追述缘由。
-1，action：用来描述state的变化（type,text）,只是一个普通的对象。
-2，reducer的目的就是连接变化，和旧的state，返回新的state。必须是纯函数
-3，唯一改变state的方式就是触发action。
+
+* action：用来描述state的变化（type,text）,只是一个普通的对象。
+* reducer的目的就是连接变化，和旧的state，返回新的state。必须是纯函数
+* 唯一改变state的方式就是触发action。
 
 
 
@@ -392,15 +392,91 @@ function TestComponent() {
 ```js
 ```
 
+### useRef
 
+* 获取DOM节点
 
-### 其他Hook
+### useContext
 
+* 同class组件context一致
 
+### useReducer
+
+* 相对useState的扩展，用在单组件。 与redux中的reducer完全不同
+
+### useMemo & useCallback
+
+* hooks常用的优化策略
+
+* 用useMemo缓存数据，用useCallback缓存函数
+
+* class组件使用shouldComponentUpdate和PureComponent优化
+
+  ```js
+  import React, {useMemo, memo, useState} from 'react'
+  
+  function Parent {
+      const [count, setCount] = useState(0)
+      const [name] = useState('yaji')
+      
+      // 用useMemo缓存数据，有依赖
+  	const userInfo = useMemo(() => {
+          return {name, age: 12}
+      }, [name])
+      
+      // 用useCallback缓存函数 const onchange = () => {}：子组件还是会更新
+      const onChange = useCallback(() => {
+      	console.log
+      })
+      return (
+              //   正常情况，父组件更新，子组件无条件更新。用useMemo包裹，会进行浅层比较，依赖变化才会更新
+              <div onClick={() => { setCount(count + 1) }}>{count}</div>
+    			<Child userInfo={userInfo} onChange={onChange}>
+       )
+      
+  }
+  
+  const Child = memo(({userInfo, onChange}) => {
+      return <div>{userInfo.name}
+      	<input onChange={onChange} />
+      </div>
+  }) 
+  
+  ```
 
 ### 自定义Hook
 
+* 封装通用的功能。
 
+* 扩展性，解耦代码
+
+* 步骤
+
+  * 利用useState, useEffect设置响应式数据
+  * 确定参数
+  * 确定返回值。类似： const [count,  setCount] = useState(0)
+
+  ```js
+  // 不是封装axios，而是要理解封装的思路
+  import {useState, useEffect} from 'react'
+  import axios from 'axios'
+  
+  function useAxios(url) = {
+      const [loading, setLoading] = useState(false)
+  	const [data, setData] = useState()
+      const [error, setError] = useState()
+      useEffect(() => {
+          setLoading(true)
+          axios.get(url)
+              .then(res => setData(res))
+          	.catch(err => setError(err))
+          	.finally(() => setLoading(false))
+      })
+  	return [loading,]
+  }
+  ```
+
+  
 
 ## 组件设计
 

@@ -2,6 +2,8 @@
 
 * filter是过滤器，返回一个集合。无匹配则返回空数组
 * find是返回满足条件的第一个值，无则undefind
+* map 必须有return
+* foreach可以有相对复杂操作
 
 ## 请求标头
 

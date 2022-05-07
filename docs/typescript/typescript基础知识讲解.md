@@ -44,6 +44,15 @@ let arrOfNumbers: number[] = [1, 2, 3, 4] // 数组
 let user: [string, number] = ['viking', 20] // 元组
 ```
 
+## ?  与  !
+
+* ! 号代表数据非null和undefined
+* ? 号判断变量有可能不存在的情况（undefined）
+
+## unknow
+
+
+
 ## 函数
 
 ```js
