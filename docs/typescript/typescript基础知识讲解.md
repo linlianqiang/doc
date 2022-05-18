@@ -86,13 +86,13 @@ const add3: (x: number, y: number) => number = () => {
   ObjClass.prototype.__proto__ === Object.prototype  
   // 多了一层过渡，说明objClassChild从ObjClass下来再从Object下来
   ```
-  
+
   ——— 总结：其实写法都一样，理解底层就行，尽量模仿class写法，使用面向对象的写法,便于维护，可维护是非常重要的。
-  
+
 * 定义：类就是拥有相同属性和方法的一系列对象的集合，类是一个摸具，是从这该类包含的所有具体对象中抽象出来的一个概念。
 
   类定义了它所包含的全体对象的静态特征和动态特征。
-  
+
   ```js
   class Person {}
   // 类的对象变量存在栈中，对象变量存储着对象的首地址，对象变量通过这个地址找到它的对象   
@@ -102,7 +102,7 @@ const add3: (x: number, y: number) => number = () => {
   // 第二件事：调用对应的构造函数【构造器】并且把构造器中的各个参数值赋值给对象属性
   // 第三件事：把对象赋值给对象变量 【把实例赋值给实例变量】 - d
   ```
-  
+
 * 定义类中的属性，不同写法
 
   ```js
@@ -333,7 +333,9 @@ function threeS(first: object | NumberObj, second: object | Number) {
   ```
 
 * 接口可以extends，type没有继承功能
+
 * 接口可以合并声明（名称相同），type会报错
+
 * type 可以用 & 交叉类型。接口不能交叉
 
 ## 枚举类型 Enum
@@ -382,6 +384,8 @@ console.log(son.eat());
 
 ## 声明文件
 
+* namespace全局变量。 不需要引入，就可以进行推断，会造成类型推断污染。使用export防止污染
+
 ```js
 // 加declare防止被编译成js，type 和 interface是js无法识别的关键字
 declare let/const  // 声明全局变量
@@ -393,29 +397,55 @@ interface/type // 声明全局类型
 ```
 
 ```js
-// namespace全局变量是个对象
-// 使用 jquery.$.ajax
-
+// namespace
 declare namespace Jquery {
 
     namespace $ {
-        // ---- Package ---- start
+        
         function ajaz(url: string): void
     }
 }
+// 使用 jquery.$.ajax（只是类型推断，该声明的变量还是要声明的）
+// 或者使用 export declare namespace Car{}。 在使用的地方需要引入
 ```
 
-```js
-// module 防止污染
-declare module "jqueryM" {
-	export funxtion $(selector: any) : cssSelector
+* module:  扩展原有的模块使用，需要在类型声明文件中先引用原有模块，再使用 `declare module` 扩展原有模块[26](https://github.com/xcatliu/typescript-tutorial/tree/master/examples/declaration-files/26-declare-module)：
+
+* module：需要引入。引入的方式同npm一致。不需要路径
+  
+* module: 通过export导出 或者通过export =  （commonJS模块）导出
+  
+* ```ts
+  declare module "JQueryModule" {
+    // 类型不一定都是导出给外界使用的
+    type cssSelector = {
+      css: (key: string, value: string) => cssSelector
+    }
+    function $(ready: () => void): void
+    function $(selector: any): cssSelector
     namespace $ {
-        // ---- Package ---- start
-        function ajaz(url: string): void
+      function ajax(url: string, settings?: any): void
+      function get(url: string, settings?: any): void
+      function post(url: string, settings?: any): void
     }
-}
- // 使用： 有import的地方，需要declare module声明，同时里面可以抛出export。 可以用来扩展y
- import $ from jqueryM
-```
-
-* 通过export关键字，防止声明污染，用的时候需要引入。
+    //export default $
+    export =$
+  }
+  
+  ```
+  
+* ```ts
+  // types/moment-plugin/index.d.ts
+  
+  import * as moment from 'moment';
+  
+  declare module 'moment' {
+      export function foo(): moment.CalendarKey;
+  }
+  // src/index.ts
+  
+  import * as moment from 'moment';
+  import 'moment-plugin';
+  
+  moment.foo();
+  ```

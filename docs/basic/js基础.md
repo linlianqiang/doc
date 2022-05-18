@@ -18,12 +18,17 @@
     <form encType="">中默认的encType，form表单数据被编码为key/value格式发送到服务器（表单默认的提交数据的格式）
     或者：qs.stringify()
 
+    ```js
+    /数据格式：
+    grant_type=password&client_id=myjszl&client_secret=123&password=43&username=43
+    ```
+  
   * application/json;chatset=utf-8
-
+  
     json数据格式
-
+  
   * multipart/form-data;  boundary=----WebKitFormBoundarysE9cfzN0VuLxDQho
-
+  
     需要在表单中进行  文件上传  时，就需要使用该格式。 new formData();  
 
 ## Blob
@@ -241,4 +246,29 @@ data view 视图是一个可以从 二进制[`ArrayBuffer`](https://developer.mo
 [`FileReader.readAsText()`](https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader/readAsText)
 
 开始读取指定的[`Blob`](https://developer.mozilla.org/zh-CN/docs/Web/API/Blob)中的内容。一旦完成，`result`属性中将包含一个字符串以表示所读取的文件内容。
+
+## 前端模块化
+
+* https://juejin.cn/post/6844903576309858318
+
+### CommonJS
+
+* 语法：exports、require。 node语法中使用
+
+  ```js
+  module.exports = {}
+  ```
+
+### AMD
+
+* AMD规范采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。这里介绍用require.js实现AMD规范的模块化：用`require.config()`指定引用路径等，用`define()`定义模块，用`require()`加载模块。
+* AMD规范在2010由requireJS提出，CommonJS规范主要是弥补服务端的模块化机制，不像服务器加载速度很快，客户端加载时需要等待，可能存在假死情况
+
+### CMD
+
+CMD规范在2011年由seaJS提出，CMD规范和AMD规范类似，主要区别是CMD规范是就近加载依赖，延迟执行，只有到require时依赖才执行。
+
+### ES6 Module
+
+export 、export
 
