@@ -1,9 +1,21 @@
-## 数组
 
-* filter是过滤器，返回一个集合。无匹配则返回空数组
+## var、 let、const
+* var存在变量提升，let，const没有
+```js
+    console.log(a) //undefined . 如果是let报错。
+    var a = 100; 
+    等价：
+    var a ;
+    console.log(a)
+    a = 100;
+```
+* var、let定义变量，const定义常量
+* let，const有块级作用域。var没有。## 数组
+
+* filter是过滤器，可以return符合条件的集合集合。无匹配则返回空数组
 * find是返回满足条件的第一个值，无则undefind
-* map 必须有return
-* foreach可以有相对复杂操作
+* map 必须return原数组长度的内容
+* foreach可以有相对复杂操作。 return 不会得到一个数组结果
 
 ## 请求标头
 

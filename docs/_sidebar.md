@@ -3,7 +3,17 @@
   * [vue](框架综合应用/vue.md)
   * [面试题](框架综合应用面试题.md)
   * [webpack](框架综合应用/工程化工具.md)
-  * [js/ts](框架综合应用/js-ts.md)
+  * [性能优化](框架综合应用/性能优化.md)
+
+- 基础
+  - js
+    - [基础](basic/js基础.md)
+    - [高级](basic/js高级.md)
+    - [设计模式]
+  
+  - [indexDB](basic/indexedDB基本使用.md)
+  - [git及日常](basic/git等日常操作.md)
+  - [git提交规范](规范/git提交规范以及仓库规范.md)
 
 - 前端架构
   - [设计原则](architect/如何设计vue、react组件.md)
@@ -19,17 +29,11 @@
   - [类型断言/类型守卫](typescript/类型断言、类型守卫、自定义守卫是什么.md)
   - [泛型](typescript/泛型.md)
 
-- 基础
-  - [git及日常](basic/git等日常操作.md)
-  - [git提交规范](规范/git提交规范以及仓库规范.md)
-  - js
-    - [基础](basic/js基础.md)
-    - [面向对象](basic/面向对象.md)
-    - [indexDB](basic/indexedDB基本使用.md)
-  - 第三方库
-    - [skrollr](basic/skrollr使用.md)
-  - [SASS规范](规范/SASS规范.md)
+  
+- 第三方库
+    - [skrollr](第三方/skrollr使用.md)
   - HTML/CSS
+    - [SASS规范](规范/SASS规范.md)
     - [CSS3动画](basic/html-css/CSS3.md)
     - [Flexbox](basic/html-css/Flexbox.md)
     - [移动端UI](basic/html-css/移动端UI开发.md)
