@@ -1,11 +1,13 @@
-## typeof
+### typeof
 * 可以比较：undefined, string,number,boolern
 * object (数组、null都是object)
 * function 函数 
-## 类型转换
+
+### 类型转换
 * 强制： parseInt、parseFloat，toString
 * 隐式： 逻辑转换、==、 ‘+’、if
-## promise的三种状态
+
+### promise的三种状态
 状态：Pending，Resolved，Rejected。
 特性：
 只有异步才能改变状态。
@@ -15,6 +17,7 @@ then走完，不报错，状态变为resolved
 catch走完，不报错，状态变为resolved
 * 基础： https://www.cnblogs.com/maoli-demo/articles/14001217.html
 * 进阶： https://www.cnblogs.com/maoli-demo/articles/13842120.html
+
 #### 宏任务和微任务
 * 微任务：promise，async，await
 * 宏任务：setTimeout，setInterval，ajax，DOM事件。
@@ -33,6 +36,7 @@ catch走完，不报错，状态变为resolved
 * 先执行微任务队列，再
 * 尝试DOM渲染，最后，
 * 执行eventLoop（callback queue）
+
 #### 跨域
 1，原因：同源策略：ip，端口，协议三者必须一致。
 2，方案：
@@ -46,7 +50,8 @@ this的取值，取决于使用的时候，而不是定义的时候。
 3，箭头函数的使用（箭头函数所在的作用域）
 4，call，apply，bind中的使用
 5，全局下的this
-九，闭包
+
+### 闭包
 0，即函数定义和函数表达式位于另一个函数的函数体内。
 而且，这些内部函数可以访问它们所在的外部函数中声明的所有局部变量、参数和声明的其他内部函数。
 ** 当其中一个这样的内部函数在包含它们的外部函数之外被调用时，就会形成闭包。所以并不是函数套函数。
@@ -74,11 +79,13 @@ function fw() {
   console.log(b)
 }
 print(fw)//  自由变量的查找，是在函数定义的地方往上查找，不是在函数执行的地方 ！！！
-十，call，apply，bind
+
+### call，apply，bind
 1，改变this指向。bind返回新函数。call，apply立即调用
 2，apply()方法 接收两个参数，一个是函数运行的作用域（this），另一个是参数数组。
 3，call()方法 第一个参数和apply()方法的一样，但是传递给函数的参数必须列举出来。
-十一，Http
+
+### Http
 协议常用：http1.1 / http2（必须在https的安全证书下使用）
 状态码：
 1XX 服务器接收到请求
@@ -108,19 +115,14 @@ res headers
 Etag：资源的唯一标识
 Cache-control：资源失效日期
 LastModified：资源最后被修改的时间。
-十三，数组API：纯函数与非纯函数
+
+### 数组API：纯函数与非纯函数
 1，纯函数不改变原数组：concat，map，filter
 slice（）：函数的截取
 2，非纯函数：push，pop，shift，unshift，
 splice（）
-十四，map
-题目：[10,
-20,30].map(parseInt) 
-//解构 - parseInt API 的规则
-[10,20,30].map( (item , index) => {
-    return parseInt(item,index)
-} )
-十五、Object.create()
+
+### Object.create()
 Object.create() : 可以给对象指定原型。
 const a = {age: 24} // 等同 new Object()
 const b = Object.create(a)
@@ -147,7 +149,7 @@ const xialuo = new Student()
 why?
 
 
-## 异步加载js脚本的方式有哪些
+### 异步加载js脚本的方式有哪些
 * script标签加 async 或者 defer
     defer：等页面在内存中全部渲染结束，（DOM结构生成，其他js脚本执行完毕）加载。
         但是在window.onload前执行。
@@ -157,15 +159,15 @@ why?
 
 * 动态生成script标签。
 * 异步ajax加载js文件。
-## 防抖debounce
+### 防抖debounce
 介绍：用于频繁操作，频繁触发的场景。如keyup事件，监听input输入框的change事件。
 （等操作结束后，再触发回调）
 代码。
-## 节流throttle
+### 节流throttle
 介绍：用于频繁操作的场景。如鼠标拖拽，scroll事件。频繁操作可以指定触发的间隔。
 代码。
 
-## 变量空间 - 对象空间
+### 变量空间 - 对象空间
 
 ```js
 const myObj = {name: 'hello'}; // myObj 称为变量空间，存在栈中。{name: 'hello'}称为对象空间，存在堆中
@@ -174,7 +176,7 @@ myObj = {name: 'world'}; // myObj指向堆中新建的 {name: 'world'};
 newObj.name // hello
 ```
 
-## 原型
+### 原型
 
 * 定义：原型【 prototype ] 是定义函数由 JS 自动分配给函数的一个可以被所有构造函数实例对象变量共享的对象变量【也叫对象属性】
 
@@ -185,7 +187,7 @@ newObj.name // hello
 
   
 
-## 函数重载
+### 函数重载
 
 函数重载适合用在功能相同，但细节不同的地方。避免一个函数实现过于复杂。
 
@@ -202,6 +204,22 @@ newObj.name // hello
   // 
   ```
 
-## 装饰器
+### 装饰器
 实际上就是个方法，可以 注入 到类，方法，属性，参数，对象上，扩展功能。
+
+## 内存泄漏
+
+1，内存泄漏是未能及时释放不使用的内存。
+
+2，造成内存泄漏的原因：
+
+a，闭包
+
+b，意外的全局变量
+
+c，没有及时销毁的计时器
+
+e，DOM泄漏
+
+3，闭包中的变量（被内部函数引用的），会存在堆中。
 
