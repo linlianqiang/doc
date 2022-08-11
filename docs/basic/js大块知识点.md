@@ -1,49 +1,7 @@
+## blob 文件对象 图片信息..
 
-## var、 let、const
-* var存在变量提升，let，const没有
-```js
-    console.log(a) //undefined . 如果是let报错。
-    var a = 100; 
-    等价：
-    var a ;
-    console.log(a)
-    a = 100;
-```
-* var、let定义变量，const定义常量
-* let，const有块级作用域。var没有。## 数组
 
-* filter是过滤器，可以return符合条件的集合集合。无匹配则返回空数组
-* find是返回满足条件的第一个值，无则undefind
-* map 必须return原数组长度的内容
-* foreach可以有相对复杂操作。 return 不会得到一个数组结果
-
-## 请求标头
-
-* 常见 Content-Type
-
-  * text/html ： HTML格式
-
-  * text/plain ：纯文本格式
-
-  * application/x-www-form-urlencoded
-
-    <form encType="">中默认的encType，form表单数据被编码为key/value格式发送到服务器（表单默认的提交数据的格式）
-    或者：qs.stringify()
-
-    ```js
-    /数据格式：
-    grant_type=password&client_id=myjszl&client_secret=123&password=43&username=43
-    ```
-  
-  * application/json;chatset=utf-8
-  
-    json数据格式
-  
-  * multipart/form-data;  boundary=----WebKitFormBoundarysE9cfzN0VuLxDQho
-  
-    需要在表单中进行  文件上传  时，就需要使用该格式。 new formData();  
-
-## Blob
+### Blob
 
 `Blob` 对象表示一个不可变、原始数据的类文件对象，类似文件对象的二进制数据。
 
@@ -156,7 +114,7 @@ Binary Large Object缩写。
 
   
 
-## ArrayBuffer & 二进制流
+### ArrayBuffer & 二进制流
 
 **`ArrayBuffer`** 对象用来表示通用的、固定长度的原始二进制数据缓冲区。
 
@@ -227,15 +185,15 @@ const fileReader = new FileReader();
 
 
 
-## Uint8Array、Uint32Array...
+### Uint8Array、Uint32Array...
 
 一个**类型化数组**（**TypedArray）**对象描述了一个底层的[二进制数据缓冲区](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)（binary data buffer）的一个类数组视图（view）。事实上，没有名为 `TypedArray` 的全局属性，也没有一个名为 `TypedArray` 的构造函数。相反，有许多不同的全局属性，它们的值是特定元素类型的类型化数组构造函数
 
-## DataView
+### DataView
 
 data view 视图是一个可以从 二进制[`ArrayBuffer`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) 对象中读写多种数值类型的底层接口，使用它时，不用考虑不同平台的[字节序](https://developer.mozilla.org/zh-CN/docs/Glossary/Endianness)问题。
 
-## fileReader
+### fileReader
 
 `**FileReader**` 对象允许Web应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容，使用 [`File`](https://developer.mozilla.org/zh-CN/docs/Web/API/File) 或 [`Blob`](https://developer.mozilla.org/zh-CN/docs/Web/API/Blob) 对象指定要读取的文件或数据。
 
@@ -258,29 +216,3 @@ data view 视图是一个可以从 二进制[`ArrayBuffer`](https://developer.mo
 [`FileReader.readAsText()`](https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader/readAsText)
 
 开始读取指定的[`Blob`](https://developer.mozilla.org/zh-CN/docs/Web/API/Blob)中的内容。一旦完成，`result`属性中将包含一个字符串以表示所读取的文件内容。
-
-## 前端模块化
-
-* https://juejin.cn/post/6844903576309858318
-
-### CommonJS
-
-* 语法：exports、require。 node语法中使用
-
-  ```js
-  module.exports = {}
-  ```
-
-### AMD
-
-* AMD规范采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。这里介绍用require.js实现AMD规范的模块化：用`require.config()`指定引用路径等，用`define()`定义模块，用`require()`加载模块。
-* AMD规范在2010由requireJS提出，CommonJS规范主要是弥补服务端的模块化机制，不像服务器加载速度很快，客户端加载时需要等待，可能存在假死情况
-
-### CMD
-
-CMD规范在2011年由seaJS提出，CMD规范和AMD规范类似，主要区别是CMD规范是就近加载依赖，延迟执行，只有到require时依赖才执行。
-
-### ES6 Module
-
-export 、export
-

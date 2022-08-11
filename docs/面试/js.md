@@ -1,3 +1,15 @@
+### var、 let、const
+* var存在变量提升，let，const没有
+```js
+    console.log(a) //undefined . 如果是let报错。
+    var a = 100; 
+    等价：
+    var a ;
+    console.log(a)
+    a = 100;
+```
+* var、let定义变量，const定义常量
+* let，const有块级作用域。var没有。
 ### typeof
 * 可以比较：undefined, string,number,boolern
 * object (数组、null都是object)
@@ -88,33 +100,55 @@ print(fw)//  自由变量的查找，是在函数定义的地方往上查找，�
 ### Http
 协议常用：http1.1 / http2（必须在https的安全证书下使用）
 状态码：
-1XX 服务器接收到请求
-2XX 请求成功 eg：200
-3XX 重定向   301 永久重定向 ；302 临时重定向
-4XX 客户端错误 404
-5XX 服务端错误 500，504网关超时。
+* 1XX 服务器接收到请求
+* 2XX 请求成功 eg：200
+* 3XX 重定向   301 永久重定向 ；302 临时重定向
+* 4XX 客户端错误 404
+* 5XX 服务端错误 500，504网关超时。
 
 methods：get、post、patch、put、delete
 
-Headers：
+##### Headers：
+
 req headers：
-1，connection：keep-alive （长链接，短链接）
-2，cookie
-3，user-Agent：携带浏览器信息
-4，Content-Type：application / json 请求数据格式
-5，Accept: //浏览器可接收的数据格式
-6，Accept-Encoding: //传输压缩，浏览器可接收的压缩算法，如gzip
-7，Accept-Languange: //浏览器可接收的语言。如zh-ZN
+* connection：keep-alive （长链接，短链接）
+* cookie
+* user-Agent：携带浏览器信息
+* Content-Type：application / json 请求数据格式
+  * text/html ： HTML格式
+
+  * text/plain ：纯文本格式
+
+  * application/x-www-form-urlencoded
+
+    <form encType="">中默认的encType，form表单数据被编码为key/value格式发送到服务器（表单默认的提交数据的格式）
+    或者：qs.stringify()
+
+    ```js
+    /数据格式：
+    grant_type=password&client_id=myjszl&client_secret=123&password=43&username=43
+    ```
+  
+  * application/json;chatset=utf-8
+  
+    json数据格式
+  
+  * multipart/form-data;  boundary=----WebKitFormBoundarysE9cfzN0VuLxDQho
+  
+    需要在表单中进行  文件上传  时，就需要使用该格式。 new formData();  
+* Accept: //浏览器可接收的数据格式
+* Accept-Encoding: //传输压缩，浏览器可接收的压缩算法，如gzip
+* Accept-Languange: //浏览器可接收的语言。如zh-ZN
 
 res headers
-1，Content-Type：返回的数据格式
-2，set-cookie
-3，content-Length：返回的数据大小
-4，content-encoding：返回数据的压缩算法
+* Content-Type：返回的数据格式
+* set-cookie
+* content-Length：返回的数据大小
+* content-encoding：返回数据的压缩算法
 （缓存相关）
-Etag：资源的唯一标识
-Cache-control：资源失效日期
-LastModified：资源最后被修改的时间。
+* Etag：资源的唯一标识
+* Cache-control：资源失效日期
+* LastModified：资源最后被修改的时间。
 
 ### 数组API：纯函数与非纯函数
 1，纯函数不改变原数组：concat，map，filter
@@ -129,10 +163,17 @@ const b = Object.create(a)
 b.__proto__ === a // true
 
 ### 原型，原型链
-1，原型对象 包括显示原型 prototype 和 隐式原型__proto__（指向clss的显示原型）。    
-每个class 都有显示原型。每个实例都有隐式原型。（class只是语法糖，本质上是Function）
-2， 实例查找自身属性或者方法时，如果没找到，会不断的向上一级的原型对象查找，这个过程形成原型链。
-3，实例可以通过原型链共享原型对象上的方法。继承的本质
+
+###### 前置知识
+```js
+typeof Object === 'function' // true
+```
+
+* 原型对象 包括显示原型 prototype 和 隐式原型__proto__（指向clss的显示原型）。    
+* 每个class 都有显示原型。每个实例都有隐式原型。（class只是语法糖，本质上是Function）
+* 实例查找自身属性或者方法时，如果没找到，会不断的向上一级的原型对象查找，这个过程形成原型链。
+* 实例可以通过原型链共享原型对象上的方法。继承的本质
+
 ```js
 class People {}
 class Student extends People {}
@@ -145,6 +186,9 @@ const xialuo = new Student()
 // 因为： String.prototype : chatAt， indexOf....
 // 所以：'abc'.indexOf()
 ```
+
+<img src="/../media/prototype.awebp" style="zoom: 60%;" />
+
 ### hasOwnProperty
 why?
 
@@ -159,10 +203,12 @@ why?
 
 * 动态生成script标签。
 * 异步ajax加载js文件。
+  
 ### 防抖debounce
 介绍：用于频繁操作，频繁触发的场景。如keyup事件，监听input输入框的change事件。
 （等操作结束后，再触发回调）
 代码。
+
 ### 节流throttle
 介绍：用于频繁操作的场景。如鼠标拖拽，scroll事件。频繁操作可以指定触发的间隔。
 代码。
@@ -176,16 +222,6 @@ myObj = {name: 'world'}; // myObj指向堆中新建的 {name: 'world'};
 newObj.name // hello
 ```
 
-### 原型
-
-* 定义：原型【 prototype ] 是定义函数由 JS 自动分配给函数的一个可以被所有构造函数实例对象变量共享的对象变量【也叫对象属性】
-
-* 增加或修改原型对象的属性或方法后， 所有的实例或叫对象立即可以访问的到 【但创建实例后再覆盖原型除外】
-
-  ```js
-  ```
-
-  
 
 ### 函数重载
 

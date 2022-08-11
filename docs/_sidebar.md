@@ -1,5 +1,5 @@
 - 基础
-  - [基础](basic/js基础.md)
+  - [js](basic/js基础.md)
   - [设计模式](basic/设计模式.md)
   - [移动端UI开发](basic/移动端UI开发.md)
   - [flexbox](basic/Flexbox.md)
