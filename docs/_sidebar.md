@@ -1,9 +1,11 @@
 - 基础
-  - [js](basic/js基础.md)
+  - [js](basic/js基础语法.md)
   - [设计模式](basic/设计模式.md)
   - [移动端UI开发](basic/移动端UI开发.md)
   - [flexbox](basic/Flexbox.md)
   - [css3](basic/CSS3.md)
+  - [node](basic/node.md)
+  - [小程序](basic/小程序.md)
   
   - 规范
     - [规范汇总](basic/规范/规范汇总.md)
@@ -24,10 +26,11 @@
 - 面试
   * [js](面试/js.md)
   * [react](面试/react.md)
-  * [vue](框架综合应用/vue.md)
+  * [vue](面试/vue.md)
+  * [编程题](面试/编程题.md)
   * [其他](面试/其他.md)
-  * [webpack/babel](框架综合应用/工程化工具.md)
-  * [性能优化](框架综合应用/性能优化.md)
+  * [webpack/babel](面试/工程化工具.md)
+  * [性能优化](面试/性能优化/性能优化.md)
 
 
 - 其他

@@ -8,7 +8,8 @@
 ### find
  是返回满足条件的第一个值，无则undefind
 ### map 
-  必须return原数组长度的内容
+  * 必须return原数组长度的内容
+  * map不会修改原数组。前提是不修改对象的值（引用类型）。
 ### foreach
 可以有相对复杂操作。 return 不会得到一个数组结果
 
@@ -38,4 +39,13 @@ CMD规范在2011年由seaJS提出，CMD规范和AMD规范类似，主要区别�
 ### ES6 Module
 
 export 、export
+
+## Object.create()
+
+可以给对象指定原型? 指定的是隐式原型。
+```js
+  const a = {age: 24} // 等同 new Object()
+  const b = Object.create(a)
+  b.__proto__ === a // true
+```
 

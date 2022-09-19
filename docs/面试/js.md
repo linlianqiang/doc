@@ -93,9 +93,9 @@ function fw() {
 print(fw)//  自由变量的查找，是在函数定义的地方往上查找，不是在函数执行的地方 ！！！
 
 ### call，apply，bind
-1，改变this指向。bind返回新函数。call，apply立即调用
-2，apply()方法 接收两个参数，一个是函数运行的作用域（this），另一个是参数数组。
-3，call()方法 第一个参数和apply()方法的一样，但是传递给函数的参数必须列举出来。
+* 改变this指向。bind返回新函数。call，apply立即调用
+* apply()方法 接收两个参数，一个是函数运行的作用域（this），另一个是参数数组。
+* call()方法 第一个参数和apply()方法的一样，但是传递给函数的参数必须列举出来。
 
 ### Http
 协议常用：http1.1 / http2（必须在https的安全证书下使用）
@@ -156,11 +156,6 @@ slice（）：函数的截取
 2，非纯函数：push，pop，shift，unshift，
 splice（）
 
-### Object.create()
-Object.create() : 可以给对象指定原型。
-const a = {age: 24} // 等同 new Object()
-const b = Object.create(a)
-b.__proto__ === a // true
 
 ### 原型，原型链
 
