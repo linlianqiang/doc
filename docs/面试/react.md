@@ -86,7 +86,7 @@ this.setState({
 
 ### 生命周期
 
-![image-20220329103348624](G:\doc\docs\media\image-20220329103348624.png)
+<img src="/../media/image-20220329103348624.png" style="zoom: 70%" />
 
 ```js
 componentWillUnmount() {
@@ -146,9 +146,9 @@ componentWillUnmount() {
 
 
 ### class组件与 函数组件的区别
-1，如果组件只接收一个props，用函数组件
-2，函数组件，没有state，没有生命周期。简易版的class组件。
-3，函数组件更复合设计理念，函数式编程，react hooks提供了方案。
+* 如果组件只接收一个props，用函数组件
+* 函数组件，没有state，没有生命周期。简易版的class组件。
+* 函数组件更复合设计理念，函数式编程，react hooks提供了方案。
 
 ```js
 // 函数组件

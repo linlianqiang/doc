@@ -44,11 +44,15 @@ mounted。
 1. mixin。
 2. mixin的缺点：不清楚来源。
 3. 3.0改进：composition API
+
+
 ### 何时使用异步组件？
 * 加载大组件。
 * 路由组件。
   * 2.x：import('./components/AsyncComponent.vue')
   * 3.0: defineAsyncComponent( () => import('../../..') )
+
+
 ### 何时使用缓存组件 keep-alive
 * 不需要重复渲染的时候
 * 多个静态tab页
@@ -57,6 +61,8 @@ mounted。
 ### 何时使用beforeDestroy
 * 解绑自定义事件（addEventListen）
 * 清除计时器
+
+
 ### vuex中的action 和mutation的区别
 * action做异步操作，mutation不行。
 * mutation通常做一个操作。commit触发
@@ -142,8 +148,8 @@ tag和key相同，则认为是相同节点，不继续比较。
 模板编译：
 * vue template complier 返回with语句。 将模板编译为render函数
 * 执行render函数，生成vnode
-3，vnode最终通过虚拟Dom，diff算法，，最终生成html。
-----* 所以vue-template最终是生成vnode 
+* vnode最终通过虚拟Dom，diff算法，，最终生成html。
+* 所以vue-template最终是生成vnode 
 
 
 ### vuex与全局变量的区别
