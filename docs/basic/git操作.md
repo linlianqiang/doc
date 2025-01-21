@@ -1,6 +1,9 @@
 ## git
 
+git reset --soft HEAD^
 
+–soft
+不删除工作空间改动代码，撤销commit，不撤销git add .
 
 #### 将某个文件回退到某个版本
 
